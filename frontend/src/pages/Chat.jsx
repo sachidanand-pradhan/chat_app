@@ -13,7 +13,7 @@ const Chat = () => {
   }, []);
 
   return (
-    <div>
+    <div className="chat_box">
       {chats.map((chat, i) => (
         <div key={i}>{chat.chatName}</div>
       ))}
