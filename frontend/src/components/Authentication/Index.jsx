@@ -19,7 +19,7 @@ const Index = () => {
   console.log("datass ", data);
   return (
     <div>
-      {/* {data.map((chat, i) => (
+      {data.map((chat, i) => (
         <div>
           <div key={i}>
             {chat.chatName}
@@ -43,7 +43,7 @@ const Index = () => {
             ))}
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -12,11 +12,14 @@ import {
 import React, { useState } from "react";
 
 const SignUp = () => {
-  const [input, setInput] = useState("");
   const [show, setShow] = useState(false);
-  const handleClick = () => setShow(!show);
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [pic, setPic] = useState();
 
+  const handleClick = () => setShow(!show);
   const handleInputChange = (e) => setInput(e.target.value);
 
   const isError = input === "";
