@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       {/* <Index /> */}
       <Route path="/" component={Home} exact />
-      <Route path="/chat" component={Chat} />
+      <Route path="/chats" component={Chat} />
       {/* <Route path="*" component={PageNotFound} /> */}
     </div>
   );
