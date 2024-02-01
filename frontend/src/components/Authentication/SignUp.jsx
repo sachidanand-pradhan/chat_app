@@ -1,11 +1,11 @@
 import {
   Button,
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Input,
   InputGroup,
   InputRightElement,
+  StackDivider,
   VStack,
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
@@ -69,10 +69,10 @@ const SignUp = () => {
     }
   };
 
-  const showToast = (title) => {
+  const showToast = (title, status) => {
     toast({
       title,
-      status: "warning",
+      status,
       duration: 9000,
       isClosable: true,
       position: "top-right",
@@ -84,13 +84,13 @@ const SignUp = () => {
     const { name, email, password, confirmPassword, pic } = formData;
 
     if (!name || !email || !password || !confirmPassword) {
-      showToast("Please Fill all the Fields");
+      showToast("Please Fill all the Fields", "warning");
       setLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
-      showToast("Password Do Not Match");
+      showToast("Password Do Not Match", "warning");
       return;
     }
 
@@ -105,19 +105,25 @@ const SignUp = () => {
         { name, email, password, pic },
         config
       );
-      showToast("Registration Successful");
+      showToast("Registration Successful", "success");
 
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       history.push("/chats");
     } catch (error) {
-      showToast("Error Occurred!");
+      showToast("Error Occurred!", "warning");
       setLoading(false);
     }
   };
 
   return (
-    <VStack spacing="5px">
+    <VStack
+      // spacing="5px"
+      divider={<StackDivider borderColor="gray.200" />}
+      spacing={4}
+      align="stretch"
+    >
+      {/* // name form */}
       <FormControl id="first-name" isRequired>
         <FormLabel>Name</FormLabel>
         <Input
@@ -129,15 +135,18 @@ const SignUp = () => {
         <FormLabel>Email Address</FormLabel>
         <Input
           type="email"
+          id="email"
           placeholder="Enter Your Email Address"
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         />
       </FormControl>
+      {/* // password form */}
       <FormControl id="password" isRequired>
         <FormLabel>Password</FormLabel>
         <InputGroup size="md">
           <Input
             type={formData.showPassword ? "text" : "password"}
+            id="password"
             placeholder="Enter Password"
             onChange={(e) =>
               setFormData({ ...formData, password: e.target.value })
@@ -150,11 +159,13 @@ const SignUp = () => {
           </InputRightElement>
         </InputGroup>
       </FormControl>
+      {/* // Confirm password form */}
       <FormControl id="password" isRequired>
         <FormLabel>Confirm Password</FormLabel>
         <InputGroup size="md">
           <Input
             type={formData.showPassword ? "text" : "password"}
+            id="confirm_password"
             placeholder="Confirm password"
             onChange={(e) =>
               setFormData({ ...formData, confirmPassword: e.target.value })
@@ -167,6 +178,7 @@ const SignUp = () => {
           </InputRightElement>
         </InputGroup>
       </FormControl>
+      {/* // pic form */}
       <FormControl id="pic">
         <FormLabel>Upload your Picture</FormLabel>
         <Input
