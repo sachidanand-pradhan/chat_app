@@ -115,7 +115,8 @@ const Login = () => {
         <FormLabel>Email Address</FormLabel>
         <Input
           type="email"
-          id="email"
+          id="email1"
+          value={formData.email}
           placeholder="Enter Your Email Address"
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         />
@@ -126,7 +127,8 @@ const Login = () => {
         <InputGroup size="md">
           <Input
             type={formData.showPassword ? "text" : "password"}
-            id="password"
+            id="password1"
+            value={formData.password}
             placeholder="Enter Password"
             onChange={(e) =>
               setFormData({ ...formData, password: e.target.value })
@@ -139,7 +141,7 @@ const Login = () => {
           </InputRightElement>
         </InputGroup>
       </FormControl>
-      <Button colorScheme="blue" onClick={submitHandler}>
+      <Button colorScheme="blue" isLoading={loading} onClick={submitHandler}>
         Login
       </Button>
       <Button
