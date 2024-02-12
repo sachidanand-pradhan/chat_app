@@ -34,7 +34,7 @@ const Login = () => {
     toast({
       title,
       status,
-      duration: 9000,
+      duration: 5000,
       isClosable: true,
       position: "top-right",
     });
