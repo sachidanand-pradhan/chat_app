@@ -5,6 +5,7 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import { getSender, getSenderFull } from "../config/ChatLogics";
 import ProfileModal from "./UI_component/ProfileModel";
 import UpdateGroupChatModel from "./UI_component/UpdateGroupChatModel";
+import VideoPlayer from "./Video";
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const { user, selectedChat, setSelectedChat } = ChatState();
@@ -58,7 +59,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       ) : (
         <Box d="flex" alignItems="center" justifyContent="center" h="100%">
           <Text fontSize="3xl" pb="3" fontFamily="work sans">
-            Click on a User to start chatting
+            {/* Click on a User to start chatting */}
+            <VideoPlayer />
           </Text>
         </Box>
       )}{" "}
