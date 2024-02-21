@@ -17,7 +17,7 @@ const sendMessage = asyncHandler(async (req, res) => {
   };
 
   try {
-    const message = await Message.create(newMessage);
+    var message = await Message.create(newMessage);
 
     message = await message.populate("sender", "name pic");
     message = await message.populate("chat");
@@ -25,9 +25,9 @@ const sendMessage = asyncHandler(async (req, res) => {
       path: "chat.users",
       select: "name pic email",
     });
-    await Chat.findByIdAndUpdate(req.body.chatId, {
-      latestMessage: message,
-    });
+
+    await Chat.findByIdAndUpdate(req.body.chatId, { latestMessage: message });
+
     res.json(message);
   } catch (error) {
     res.status(400);

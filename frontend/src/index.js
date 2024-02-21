@@ -7,12 +7,12 @@ import { BrowserRouter } from "react-router-dom";
 import ChatProvider from "./Contexts/ChatProvider";
 
 ReactDOM.render(
-  <ChatProvider>
-    <ChakraProvider>
-      <BrowserRouter>
+  <BrowserRouter>
+    <ChatProvider>
+      <ChakraProvider>
         <App />
-      </BrowserRouter>
-    </ChakraProvider>
-  </ChatProvider>,
+      </ChakraProvider>
+    </ChatProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
